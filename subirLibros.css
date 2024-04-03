@@ -49,7 +49,8 @@ form {
 
 #titulo,
 #autor,
-#genero {
+#genero,
+#celular {
     border: 1px solid #ccc;
     border-radius: 20px;
     padding: 5px;

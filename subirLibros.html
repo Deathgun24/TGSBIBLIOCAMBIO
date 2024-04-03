@@ -47,7 +47,7 @@
     <h1><b>PUBLICA TUS LIBROS</b></h1>
     <p><i>A alguien podria interesarle tu libro</i></p>
     
-    <form action="#" method="post" class="custom-form">
+    <form action="pagina.html" method="post" class="custom-form">
         <div class="nested-form">
             <div class="left-section">
                 <div class="form-group">
@@ -81,7 +81,11 @@
                     <label for="genero" class="white-label">Género</label>
                     <input type="text" id="genero" name="genero" placeholder="Ficción, misterio, romance, ..." required>
                 </div>
-
+                
+                <div class="form-group">
+                    <label for="celular" class="white-label">Número contacto</label>
+                    <input type="text" id="celular" name="celular" required>
+                </div>
 
                 <div class="text-center">
                     <button type="submit" class="btn btn-danger bg-dark btn-xs">PUBLICAR</button>
@@ -100,5 +104,8 @@
             </div>
         </div>
     </footer>
+
+    <script src="subirLibros.js"></script>
+
 </body>
 </html>
