@@ -19,7 +19,7 @@ body {
     width: 760px;
     height: 480px;
     position: relative;
-    background: #ff6860;
+    background-color: rgb(149, 176, 175);
     border: 20px solid #474e5d;
     border-radius: 10px;
   }
