@@ -1,3 +1,9 @@
+/* Estilos para hacer zoom en las imágenes al pasar el cursor */
+.zoom:hover {
+    transform: scale(1.1); /* Aumentar la escala en un 10% */
+    transition: transform 0.5s; /* Agregar una transición suave */
+}
+
 /* Estilos para los elementos <li> */
 ul {
     list-style-type: none; /* Eliminar viñetas */
@@ -23,10 +29,9 @@ li a:hover {
 }
 .rating {
     color: #FFD700; /* Color de las estrellas */
-  }
-  
-  /* Estilos para las estrellas desactivadas */
-  .rating.inactive {
+}
+
+/* Estilos para las estrellas desactivadas */
+.rating.inactive {
     color: #ccc; /* Color gris para las estrellas desactivadas */
-  }
-  
+}
