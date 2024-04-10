@@ -61,7 +61,7 @@
             <label for="nombre">Nombre Completo</label>
             <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre completo">
             <label for="apellidos">Apellidos</label>
-            <input type="text" id="apellidos" name="apellidos" placeholder="Escribe tus apellidos">
+            <input type="text" id="apellido" name="apellidos" placeholder="Escribe tus apellidos">
             <label for="dni">DNI</label>
             <input type="text" id="dni" name="dni" placeholder="Escribe tu número de DNI">
 
@@ -77,12 +77,16 @@
             <input type="text" id="celular" name="celular" placeholder="Escribe tu número de celular">
             <label for="contrasena">Contraseña</label>
             <input type="password" id="contrasena" name="contrasena" placeholder="Escribe tu contraseña">
-            <button type="submit" class="btn text-white" style="background-color: red; position: relative;top: 10px;"><b>REGISTRARSE</b></button>
+            <button type="button" onclick="registrar()" class="btn text-white"  style="background-color: red; position: relative;top: 10px;"><b>REGISTRARSE</b></button>
           </form>
         </div>
       </div>
     </div>
   </div>
+  <div style="background-color: #1e00ff;">
+  <h2>Personas registradas:</h2>
+<ul id="listaRegistros"></ul>
+</div>
   <br><br><br><br><br>
     <footer class="bg-dark text-white py-4">
       <div class="container">
@@ -95,5 +99,42 @@
       </div>
     </footer>
 </body>
+
+<script>
+  let registros = [];
+
+function registrar() {
+  let nombre = document.getElementById("nombre").value;
+  let apellido = document.getElementById("apellido").value;
+  let dni = document.getElementById("dni").value;
+  let correo = document.getElementById("correo").value;
+  let celular = document.getElementById("celular").value;
+  let contrasena = document.getElementById("contrasena").value;
+
+  let persona = {
+    nombre: nombre,
+    apellido: apellido,
+    dni: dni,
+    correo: correo,
+    celular: celular,
+    contrasena: contrasena
+  };
+
+  registros.push(persona);
+  mostrarRegistros();
+}
+
+function mostrarRegistros() {
+  let listaRegistros = document.getElementById("listaRegistros");
+  listaRegistros.innerHTML = "";
+  registros.forEach((persona, index) => {
+    let li = document.createElement("li");
+    li.textContent = `${persona.nombre} ${persona.apellido} - ${persona.dni} - ${persona.correo} - ${persona.celular} `;
+    listaRegistros.appendChild(li);
+  });
+}
+
+
+</script>
 
 </html>
