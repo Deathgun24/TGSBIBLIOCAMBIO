@@ -64,16 +64,16 @@
                                 <form class="bg-light p-4 rounded">
                                     <div class="form-group">
                                         <h3 class="text-center"><b>BIENVENIDO</b></h3>
-                                        <label for="username"><b>Usuario</b></label>
-                                        <input type="text" class="form-control" id="username"
-                                            placeholder="Correo Electronico">
+                                        <label for="correo"><b>Usuario</b></label>
+                                        <input type="email" class="form-control" id="correo" name="correo"
+                                             placeholder="Correo Electronico">
                                     </div>
                                     <div class="form-group">
-                                        <label for="password"><b>Contraseña</b></label>
-                                        <input type="password" class="form-control" id="password" placeholder="•••••••">
+                                        <label for="contrasena"><b>Contraseña</b></label>
+                                        <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="•••••••">
                                     </div>
-                                    <button type="submit" class="btn btn-danger btn-block"
-                                        formaction="pagina.html">Iniciar sesión</button>
+                                    <button type="submit"  onclick="iniciarSesion()"  formaction="pagina.html" class="btn btn-danger btn-block"
+                                    >Iniciar sesión</button>
 
                                     <div class="text-center mt-3">
                                         <a href="#" class="text-decoration-none">¿Perdiste tu contraseña?</a><br>
@@ -81,6 +81,7 @@
                                                 class="text-decoration-none">Registrate</a></span>
                                     </div>
                                 </form>
+                                <p id="mensaje"></p>
 
                             </div>
 
@@ -107,7 +108,47 @@
         </div>
     </main>
 
+    <script>
+        let registros = [
+            {
+                nombre: "Miguel",
+                apellido: "Guzman",
+                dni: "76200638",
+                correo: "Miguel_guzman6@usmp.pe",
+                celular: "987654321",
+                contrasena: "contrasena1"
+            },
+            {
+                nombre: "María",
+                apellido: "Lopez",
+                dni: "87654321",
+                correo: "maria@example.com",
+                celular: "123456789",
+                contrasena: "contrasena2"
+            },
+            {
+                nombre: "Pedro",
+                apellido: "Gomez",
+                dni: "45678912",
+                correo: "pedro@example.com",
+                celular: "456789123",
+                contrasena: "contrasena3"
+            }
+        ];
 
+        function iniciarSesion() {
+            let correo = document.getElementById("correo").value;
+            let contrasena = document.getElementById("contrasena").value;
+
+            let encontrado = registros.some((persona) => persona.correo == correo && persona.contrasena == contrasena);
+
+            if (encontrado) {
+                window.location.href = "pagina.html"; // Redirigir a la página principal
+            } else {
+                document.getElementById("mensaje").textContent = "Correo electrónico o contraseña incorrectos. Por favor, inténtelo de nuevo.";
+            }
+        }
+    </script>
 </body>
 
 </html>

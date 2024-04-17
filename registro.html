@@ -77,16 +77,13 @@
             <input type="text" id="celular" name="celular" placeholder="Escribe tu número de celular">
             <label for="contrasena">Contraseña</label>
             <input type="password" id="contrasena" name="contrasena" placeholder="Escribe tu contraseña">
-            <button type="button" onclick="registrar()" class="btn text-white"  style="background-color: red; position: relative;top: 10px;"><b>REGISTRARSE</b></button>
+            <button type="submit" onclick="registrar()" formaction="pagina.html" class="btn text-white"  style="background-color: red; position: relative;top: 10px;"><b>REGISTRARSE</b></button>
           </form>
         </div>
       </div>
     </div>
   </div>
-  <div style="background-color: #1e00ff;">
-  <h2>Personas registradas:</h2>
-<ul id="listaRegistros"></ul>
-</div>
+  
   <br><br><br><br><br>
     <footer class="bg-dark text-white py-4">
       <div class="container">
@@ -101,40 +98,61 @@
 </body>
 
 <script>
-  let registros = [];
+  let registros = [
+    {
+        nombre: "Miguel",
+        apellido: "Guzman",
+        dni: "76200638",
+        correo: "Miguel_guzman6@usmp.pe",
+        celular: "987654321",
+        contrasena: "contrasena1"
+    },
+    {
+        nombre: "María",
+        apellido: "Lopez",
+        dni: "87654321",
+        correo: "maria@example.com",
+        celular: "123456789",
+        contrasena: "contrasena2"
+    },
+    {
+        nombre: "Pedro",
+        apellido: "Gomez",
+        dni: "45678912",
+        correo: "pedro@example.com",
+        celular: "456789123",
+        contrasena: "contrasena3"
+    }
+  ];
 
-function registrar() {
-  let nombre = document.getElementById("nombre").value;
-  let apellido = document.getElementById("apellido").value;
-  let dni = document.getElementById("dni").value;
-  let correo = document.getElementById("correo").value;
-  let celular = document.getElementById("celular").value;
-  let contrasena = document.getElementById("contrasena").value;
+  let registrosGuardados = JSON.parse(localStorage.getItem("registros")) || [];
+  registros = registros.concat(registrosGuardados);
 
-  let persona = {
-    nombre: nombre,
-    apellido: apellido,
-    dni: dni,
-    correo: correo,
-    celular: celular,
-    contrasena: contrasena
-  };
+  function registrar() {
+      let nombre = document.getElementById("nombre").value;
+      let apellido = document.getElementById("apellido").value;
+      let dni = document.getElementById("dni").value;
+      let correo = document.getElementById("correo").value;
+      let celular = document.getElementById("celular").value;
+      let contrasena = document.getElementById("contrasena").value;
 
-  registros.push(persona);
-  mostrarRegistros();
-}
+      let persona = {
+          nombre: nombre,
+          apellido: apellido,
+          dni: dni,
+          correo: correo,
+          celular: celular,
+          contrasena: contrasena
+      };
 
-function mostrarRegistros() {
-  let listaRegistros = document.getElementById("listaRegistros");
-  listaRegistros.innerHTML = "";
-  registros.forEach((persona, index) => {
-    let li = document.createElement("li");
-    li.textContent = `${persona.nombre} ${persona.apellido} - ${persona.dni} - ${persona.correo} - ${persona.celular} `;
-    listaRegistros.appendChild(li);
-  });
-}
+      registros.push(persona);
+      localStorage.setItem("registros", JSON.stringify(registros));
+      alert('Usuario registrado correctamente');
+  }
 
-
+  
 </script>
+
+  
 
 </html>
